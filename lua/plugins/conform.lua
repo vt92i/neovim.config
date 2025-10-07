@@ -18,6 +18,8 @@ return {
       json = { "prettier" },
 
       lua = { "stylua" },
+
+      terraform = { "terraform_fmt" },
     },
 
     format_after_save = {

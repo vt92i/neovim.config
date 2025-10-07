@@ -25,3 +25,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
+
+vim.filetype.add {
+  extension = {
+    tf = "terraform",
+    tfvars = "terraform",
+  },
+}
