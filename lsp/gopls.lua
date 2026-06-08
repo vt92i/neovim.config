@@ -10,6 +10,17 @@
 ---
 --- @field custom_subdir string?
 
+-- Filetypes
+vim.filetype.add {
+  extension = {
+    gotmpl = "gotmpl",
+    gowork = "gowork",
+  },
+  filename = {
+    ["go.work"] = "gowork",
+  },
+}
+
 local mod_cache = nil
 local std_lib = nil
 
