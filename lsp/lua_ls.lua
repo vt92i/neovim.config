@@ -88,6 +88,18 @@ return {
     Lua = {
       codeLens = { enable = true },
       hint = { enable = true, semicolon = "Disable" },
+      diagnostics = { globals = { "vim", "require" } },
+      runtime = { version = "LuaJIT" },
+      telemetry = { enable = false },
+      workspace = {
+        library = {
+          vim.env.VIMRUNTIME,
+          "${3rd}/luv/library",
+          "${3rd}/busted/library",
+          -- If you prefer the full runtime path instead, uncomment:
+          -- vim.api.nvim_get_runtime_file("", true),
+        },
+      },
     },
   },
 }
