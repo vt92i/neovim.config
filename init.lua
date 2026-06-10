@@ -13,6 +13,7 @@ require("lazy").setup({ { import = "plugins" } }, require "config.lazy")
 require("config.lsp").init()
 require "config.options"
 require "config.autocmds"
+require "config.ui"
 
 vim.schedule(function()
   require "config.keymaps"
