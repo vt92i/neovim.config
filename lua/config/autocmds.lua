@@ -25,3 +25,26 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("TextChangedI", {
+  group = vim.api.nvim_create_augroup("LspAutoSignatureHelp", { clear = true }),
+  callback = function(args)
+    local clients = vim.lsp.get_clients { bufnr = args.buf, method = "textDocument/signatureHelp" }
+    if #clients == 0 then
+      return
+    end
+
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    local line = vim.api.nvim_get_current_line()
+    local col = cursor[2]
+
+    if col == 0 then
+      return
+    end
+    local char_before_cursor = string.sub(line, col, col)
+
+    if char_before_cursor == "(" or char_before_cursor == "," then
+      pcall(vim.lsp.buf.signature_help)
+    end
+  end,
+})
